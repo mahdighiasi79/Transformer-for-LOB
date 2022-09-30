@@ -8,38 +8,6 @@ from torch.nn import Sequential
 
 
 class MultiLayerPerceptron(Sequential):
-    """Multi-layer perceptron.
-
-    Args:
-        in_features (int): size of each input sample.
-        out_features (int): size of each output sample.
-        n_layers (int): number of hidden layers.
-        n_units (int): number of units in each hidden layer.
-        activation (Module): activation module in hidden layers.
-
-    Shape:
-        - Input: :math:`(N, *, H_in)` where
-          :math:`*` means any number of additional dimensions and
-          :math`H_in` is ``in_features``.
-        - Output: :math:`(N, *, H_out)` where
-          all but the last dimension are the same shape as the input and
-          :math:`H_out` is ``out_features``.
-
-    Examples:
-        >>> import torch
-        >>>
-        >>> m = MultiLayerPerceptron(2, 3)
-        >>> m
-        MultiLayerPerceptron(
-          (0): Linear(in_features=2, out_features=32, bias=True)
-          (1): ReLU()
-          (2): Linear(in_features=32, out_features=32, bias=True)
-          (3): ReLU()
-          (4): Linear(in_features=32, out_features=3, bias=True)
-        )
-        >>> m(torch.empty(1, 2)).size()
-        torch.Size([1, 3])
-    """
 
     def __init__(
         self,

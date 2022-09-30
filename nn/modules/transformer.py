@@ -4,23 +4,6 @@ from torch.nn import TransformerEncoderLayer
 
 
 class CausalTransformerEncoderLayer(TransformerEncoderLayer):
-    """Transformer encoder layer with causal mask.
-
-    See :class:`torch.nn.TransformerEncoderLayer` for details.
-
-    Examples:
-
-        >>> L, N, E = 5, 1, 2  # sequence length, batch, features
-        >>> m = CausalTransformerEncoderLayer(E, 1)
-        >>> src = torch.empty(L, N, E)
-        >>> m.causal_mask(src)
-        tensor([[False,  True,  True,  True,  True],
-                [False, False,  True,  True,  True],
-                [False, False, False,  True,  True],
-                [False, False, False, False,  True],
-                [False, False, False, False, False]])
-        >>> assert m(src).size() == src.size()
-    """
 
     def causal_mask(self, src: Tensor) -> Tensor:
         # In PyTorch documentation of MultiHeadAttention:

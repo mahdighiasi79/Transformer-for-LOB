@@ -6,35 +6,6 @@ from torch.nn import Module
 
 
 class PositionalEncoding(Module):
-    """Positional encoder.
-
-    Args:
-        d_model (int, default=1): Dimension of the model.
-        max_length (int, default=100): Maximum length of the sequence
-        encoding ({"linear"}): Method of encoding.
-            For "linear":
-
-                y = x / max_length
-
-                x : position in the sequence
-                y : positional encoder
-
-    Shape:
-        - Input: :math:`(N, *, X, L)` where :math:`N` is the batch size,
-          :math:`X` is the number of features in the input,
-          :math:`F` is the number of features in the positional encoding,
-          :math:`L` is the length of the sequence,
-          :math:`*` is any number of additional dimensions.
-        - Output: :math:`(N, *, X + F, L)`.
-
-    Examples:
-
-        >>> _ = torch.manual_seed(42)
-        >>> x = torch.randn(1, 2, 10)
-        >>> m = PositionalEncoding()
-        >>> m(x).size()
-        torch.Size([1, 3, 10])
-    """
 
     positional_encoder: Tensor
 

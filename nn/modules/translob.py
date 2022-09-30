@@ -19,59 +19,6 @@ from .transformer import CausalTransformerEncoderLayer
 
 
 class TransLOB(Module):
-    r"""Transformers for limit order books.
-
-    Default values are the same with the original paper, unless stated otherwise.
-
-    Reference:
-        - Transformers for limit order books, James Wallbridge (2020)
-          https://github.com/jwallbridge/translob
-
-    Args:
-        in_features (int, default=40): The number of input features.
-        out_features (int, default=3): The number of output features.
-        out_activation (torch.nn.Module, default=torch.nn.Softmax(-1)):
-            The activation layer applied to the output.
-        conv_n_layers (int, default=5): The number of convolutional layers.
-        conv_n_features (int, default=14): The number of features
-            in the convolutional layers.
-        conv_kernel_size (int, default=2): The kernel size
-            in the convolutional layers.
-        conv_dilation (int or tuple[int], default=(1, 2, 4, 8, 16)): The dilation(s)
-            in the convolutional layers.
-        tf_n_channels: (int, default=3): The number of channels
-            in the multi-head self-attension of Transformer encoder.
-            Its default value may be different from the original implementation.
-            Its default value (denoted "C" in the paper?) does not seem to be
-            clarified in the original papar and so we set the default value arbitrarily.
-        tf_dim_feedforward (int, default=60): The dimension of feed-forward
-            network model in Transformer encoder.
-        tf_dropout_rate (float, default=0.0): Dropout rate in Transformer encoder.
-        tf_num_layers (int, default=2): Number of sub-encoder-layers in the Transformer encoder.
-        mlp_dim (int, default=64):
-            Dimension of feedforward network model after Transformer encoder.
-        mlp_n_layers (int, default=1):
-            Number of layers in feedforward network model after Transformer encoder.
-        dropout_rate (float, default=0.1):
-            Dropout rate after Transformer encoder.
-
-    Shapes:
-        - Input: :math:`(N, C, L)` where :math:`N` is the batch size,
-          :math:`C` is the number of features and
-          :math:`L` is the length of the sequence.
-          :math:`C = 40` in the original paper: ask/bid, level 1-10, and price/volume.
-          :math:`L = 100` in the original paper.
-        - Output: :math:`(N, N_{\text{out}})`
-          :math:`N_{\text{out}} = 3` in the original paper (up, down, and neutral).
-
-    Examples:
-        >>> import torch
-        >>>
-        >>> m = TransLOB()
-        >>> input = torch.empty(1, 40, 100)
-        >>> m(input).size()
-        torch.Size([1, 3])
-    """
 
     def __init__(
         self,

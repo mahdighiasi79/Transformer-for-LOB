@@ -1,0 +1,15 @@
+LICENSE
+MANIFEST.in
+README.md
+pyproject.toml
+setup.py
+persiantools/__init__.py
+persiantools/characters.py
+persiantools/digits.py
+persiantools/jdatetime.py
+persiantools/utils.py
+persiantools.egg-info/PKG-INFO
+persiantools.egg-info/SOURCES.txt
+persiantools.egg-info/dependency_links.txt
+persiantools.egg-info/not-zip-safe
+persiantools.egg-info/top_level.txt
